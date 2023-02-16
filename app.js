@@ -52,49 +52,19 @@ console.log(reverseWords(sentence));
 
 // Exercise 4 Section
 console.log("EXERCISE 4:\n==========\n");
-
-// My own attempt
-
-/*
-let csvData = "name,age\nFrodo,50\nSam,38\nMerry,36\nPippin,26";
-let newData = csvData.split("\n");
-let dataHeaders = newData[0].split(",")
-
-let result = []
-
-for (let i = 1; i < newData.length; i++) {
-    let outcome = newData[i].split(",");
-    //Object.fromEntries(outcome)
- 
-    console.log(outcome)
-}
-//let obj = Object.fromEntries(outcome) */
-
-//console.log(outcome)
-
-// Video Follow Along
-
 let csvData = "name,age\nFrodo,50\nSam,38\nMerry,36\nPippin,26";
 
-function csvConverter(data) {
-    //Deteremine headers
-    let headers = data.slice(0, data.indexOf("\n")).split(",");
-    // Determine values
-    let dataValue = data.slice(data.indexof("\n") + 1).split("\n")
+const headers = csvData.split("\n")[0].split(",");
+const dataValues = csvData.split("\n").slice(1);
+const newArr = []
 
-    const customArr = dataValue.map(row => {
-        let values = row.split(,)
-        let obj = {}
-        values.forEach((col, idx) => {
-            if (idx < headers.length) {
-                obj[header[idx]] = col;
-            } else {
-                obj[`msi${idx}`] = col;
-            }
-        });
-        return obj;
-    })
-    return customArr
+for (i = 0; i < dataValues.length; i++) {
+    let indValues = dataValues[i].split(",");
+    let obj ={
+        [headers[0]]: indValues[0],
+        [headers[1]]: indValues[1],
+    };
+    newArr.push(obj)
 }
 
-console.log(csvConverter(csvData))
+console.log(newArr)
